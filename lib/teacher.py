@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
-from lib.user import User
-
+from user import User
 import random
 
 class Teacher(User):
@@ -15,8 +14,11 @@ class Teacher(User):
         "pipenv install pipenv shell",
         "pytest -x flag to fail fast",
     ]
+
     def __init__(self, first_name, last_name):
         super().__init__(first_name, last_name)
+        self.knowledge = Teacher.knowledge
+
     def teach(self):
-        return random.choice(self.knowledge)
-        pass
+        index = random.randint(0, len(self.knowledge) - 1)
+        return self.knowledge[index]
